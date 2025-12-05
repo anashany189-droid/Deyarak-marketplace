@@ -6,7 +6,7 @@ const Products: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Steel', 'Cement', 'Bricks', 'Finishing', 'Paints'];
+  const categories = ['All', 'Steel', 'Cement', 'Bricks', 'Aggregates', 'Finishing', 'Paints', 'Electrical', 'Plumbing'];
 
   const filteredProducts = MOCK_PRODUCTS.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
