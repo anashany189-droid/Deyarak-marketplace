@@ -20,6 +20,10 @@ const Products: React.FC<ProductsProps> = ({ onProductClick }) => {
     return matchesSearch && matchesCategory;
   });
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = "https://placehold.co/600x600?text=Image+Not+Found";
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header & Controls */}
@@ -70,7 +74,12 @@ const Products: React.FC<ProductsProps> = ({ onProductClick }) => {
             className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col cursor-pointer group"
           >
             <div className="relative h-56 bg-white flex items-center justify-center p-4">
-              <img src={product.image} alt={product.name} className="max-h-full max-w-full object-cover group-hover:scale-105 transition-transform" />
+              <img 
+                src={product.image} 
+                alt={product.name} 
+                onError={handleImageError}
+                className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform" 
+              />
               {product.oldPrice && (
                  <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                    SALE

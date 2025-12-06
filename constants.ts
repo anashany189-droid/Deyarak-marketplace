@@ -1,9 +1,6 @@
 
 import { Product, Supplier, ChartData } from './types';
 
-// Helper to generate generic construction placeholders with slight variations
-// We are now using specific Unsplash IDs to ensure the image matches the context (Ceramic, Steel, etc.)
-
 export const MOCK_SUPPLIERS: Supplier[] = [
   {
     id: 's1',
@@ -12,7 +9,7 @@ export const MOCK_SUPPLIERS: Supplier[] = [
     location: 'Nasr City, Cairo',
     specialty: 'Ceramics & Sanitary Ware',
     logo: 'https://ui-avatars.com/api/?name=El+Salab&background=f97316&color=fff',
-    phone: '19600'
+    phone: '' // Contact info hidden
   },
   {
     id: 's2',
@@ -21,7 +18,7 @@ export const MOCK_SUPPLIERS: Supplier[] = [
     location: 'Maadi, Cairo',
     specialty: 'Porcelain & Ceramics',
     logo: 'https://ui-avatars.com/api/?name=Mahgoub&background=1e293b&color=fff',
-    phone: '19000'
+    phone: ''
   },
   {
     id: 's3',
@@ -30,7 +27,7 @@ export const MOCK_SUPPLIERS: Supplier[] = [
     location: 'Haram, Giza',
     specialty: 'Paints & Finishing',
     logo: 'https://ui-avatars.com/api/?name=Sedhom&background=2563eb&color=fff',
-    phone: '01000000000'
+    phone: ''
   },
   {
     id: 's4',
@@ -39,7 +36,7 @@ export const MOCK_SUPPLIERS: Supplier[] = [
     location: 'Alexandria',
     specialty: 'Ceramics & Decor',
     logo: 'https://ui-avatars.com/api/?name=El+Mazloum&background=dc2626&color=fff',
-    phone: '16000'
+    phone: ''
   },
   {
     id: 's5',
@@ -48,7 +45,7 @@ export const MOCK_SUPPLIERS: Supplier[] = [
     location: 'Fifth Settlement, Cairo',
     specialty: 'Electrical Supplies',
     logo: 'https://ui-avatars.com/api/?name=Elsewedy&background=ef4444&color=fff',
-    phone: '19900'
+    phone: ''
   }
 ];
 
@@ -61,10 +58,10 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 850,
     oldPrice: 920,
     unit: 'Bucket',
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop', // White Paint Bucket
+    image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=600', // Paint Buckets
     images: [
-      'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=600&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=600',
+      'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600'
     ],
     supplier: 'Sedhom for Paints',
     rating: 4.8,
@@ -89,7 +86,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Paints',
     price: 1850,
     unit: 'Bucket',
-    image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=600&auto=format&fit=crop', // Paint Can
+    image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=600', // Paint Can
     supplier: 'Jotun Official Store',
     rating: 4.9,
     reviewsCount: 120,
@@ -109,7 +106,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Paints',
     price: 320,
     unit: 'Bag',
-    image: 'https://images.unsplash.com/photo-1632759132036-7014b29b9f93?q=80&w=600&auto=format&fit=crop', // White paste/putty texture
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=600', // Putty/Paste Application
     supplier: 'Sipes Egypt',
     rating: 4.6,
     reviewsCount: 89,
@@ -130,7 +127,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Tools',
     price: 150,
     unit: 'Set',
-    image: 'https://images.unsplash.com/photo-1585644198332-6878e19e072c?q=80&w=600&auto=format&fit=crop', // Paint Roller
+    image: 'https://images.unsplash.com/photo-1585644198332-6878e19e072c?auto=format&fit=crop&q=80&w=600', // Roller
     supplier: 'Sedhom for Paints',
     rating: 4.7,
     reviewsCount: 45,
@@ -149,7 +146,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Tools',
     price: 45,
     unit: 'Piece',
-    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=600&auto=format&fit=crop', // Paint Brushes
+    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&q=80&w=600', // Paint Brushes
     supplier: 'Sedhom for Paints',
     rating: 4.5,
     reviewsCount: 110,
@@ -167,7 +164,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Tools',
     price: 180,
     unit: 'Piece',
-    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop', // Trowel context
+    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=600', // Trowel
     supplier: 'Modern Tools',
     rating: 4.8,
     reviewsCount: 22,
@@ -189,8 +186,8 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 165,
     oldPrice: 190,
     unit: 'm²',
-    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=600&auto=format&fit=crop', // Marble Tiles
-    images: ['https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=600&auto=format&fit=crop'],
+    image: 'https://images.unsplash.com/photo-1620612660143-26709d78153b?auto=format&fit=crop&q=80&w=600', // Beige Tiles
+    images: ['https://images.unsplash.com/photo-1620612660143-26709d78153b?auto=format&fit=crop&q=80&w=600'],
     supplier: 'El Salab',
     rating: 4.5,
     reviewsCount: 56,
@@ -210,7 +207,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Finishing',
     price: 550,
     unit: 'm²',
-    image: 'https://images.unsplash.com/photo-1560130958-30c503a56825?q=80&w=600&auto=format&fit=crop', // Grey Stone Tile
+    image: 'https://images.unsplash.com/photo-1599619351208-3e6c839d6828?auto=format&fit=crop&q=80&w=600', // Grey Marble/Stone
     supplier: 'Mahgoub',
     rating: 4.9,
     reviewsCount: 23,
@@ -232,7 +229,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Electrical',
     price: 2850,
     unit: 'Roll',
-    image: 'https://images.unsplash.com/photo-1549925695-8848d6139988?q=80&w=600&auto=format&fit=crop', // Electrical Cable Spools
+    image: 'https://images.unsplash.com/photo-1549925695-8848d6139988?auto=format&fit=crop&q=80&w=600', // Cables
     supplier: 'Elsewedy Electric Store',
     rating: 5.0,
     reviewsCount: 512,
@@ -253,7 +250,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 65,
     oldPrice: 80,
     unit: 'Unit',
-    image: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=600&auto=format&fit=crop', // LED Bulb
+    image: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=600', // Light Bulb
     supplier: 'Venus',
     rating: 4.7,
     reviewsCount: 1020,
@@ -272,7 +269,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Electrical',
     price: 1200,
     unit: 'Unit',
-    image: 'https://images.unsplash.com/photo-1621252179027-94459d27d3ee?q=80&w=600&auto=format&fit=crop', // Electric Panel
+    image: 'https://images.unsplash.com/photo-1555664424-778a69022365?auto=format&fit=crop&q=80&w=600', // Electrical Panel concept
     supplier: 'Schneider Distribution',
     rating: 4.8,
     reviewsCount: 45,
@@ -293,7 +290,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Plumbing',
     price: 120,
     unit: 'Piece',
-    image: 'https://images.unsplash.com/photo-1605623086915-4673322479e3?q=80&w=600&auto=format&fit=crop', // Green/Plastic Pipes
+    image: 'https://images.unsplash.com/photo-1605623086915-4673322479e3?auto=format&fit=crop&q=80&w=600', // Pipes
     supplier: 'Banha (BR) Official',
     rating: 4.9,
     reviewsCount: 300,
@@ -313,7 +310,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Plumbing',
     price: 1850,
     unit: 'Unit',
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop', // Chrome Faucet
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=600', // Faucet
     supplier: 'El Sharif Mixers',
     rating: 4.6,
     reviewsCount: 88,
@@ -332,7 +329,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Plumbing',
     price: 4500,
     unit: 'Unit',
-    image: 'https://images.unsplash.com/photo-1596255106511-9213134989ae?q=80&w=600&auto=format&fit=crop', // Toilet
+    image: 'https://images.unsplash.com/photo-1596255106511-9213134989ae?auto=format&fit=crop&q=80&w=600', // Toilet
     supplier: 'El Salab',
     rating: 4.8,
     reviewsCount: 67,
@@ -353,7 +350,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Steel',
     price: 48000,
     unit: 'Ton',
-    image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=600&auto=format&fit=crop', // Rebar
+    image: 'https://images.unsplash.com/photo-1605117882932-f9e32b03ef3c?auto=format&fit=crop&q=80&w=600', // Rebar
     supplier: 'Ezz Steel',
     rating: 5.0,
     reviewsCount: 1500,
@@ -372,7 +369,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Cement',
     price: 120,
     unit: 'Bag',
-    image: 'https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?q=80&w=600&auto=format&fit=crop', // Cement Bag context
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600', // White bucket/bag generic
     supplier: 'Lafarge Egypt',
     rating: 4.7,
     reviewsCount: 890,

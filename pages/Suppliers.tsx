@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { MOCK_SUPPLIERS } from '../constants';
-import { MapPin, Phone, Star, ShieldCheck } from 'lucide-react';
+import { MapPin, Star, ShieldCheck } from 'lucide-react';
 
 const Suppliers: React.FC = () => {
   return (
@@ -33,10 +33,7 @@ const Suppliers: React.FC = () => {
                 <ShieldCheck className="h-4 w-4 mr-2 text-green-500" />
                 Specialty: {supplier.specialty}
               </div>
-              <div className="flex items-center text-sm text-slate-600">
-                <Phone className="h-4 w-4 mr-2 text-slate-400" />
-                {supplier.phone}
-              </div>
+              {/* Phone number removed as requested */}
               <div className="flex items-center text-sm">
                 <Star className="h-4 w-4 mr-2 text-yellow-500 fill-current" />
                 <span className="font-bold text-slate-900 mr-1">{supplier.rating}</span>
