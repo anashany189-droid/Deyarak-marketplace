@@ -1,13 +1,66 @@
 import React from 'react';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { PRICE_HISTORY_DATA } from '../constants';
-import { Package, Truck, DollarSign, Clock } from 'lucide-react';
+import { Package, Truck, DollarSign, Clock, CheckCircle2, MapPin, Box } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h2 className="text-2xl font-bold text-slate-900 mb-6">Contractor Dashboard</h2>
       
+      {/* Active Order Tracking Section (New Feature) */}
+      <div className="bg-white rounded-xl shadow-md border border-slate-100 p-6 mb-8">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h3 className="text-lg font-bold text-slate-900">Track Order #ORD-493</h3>
+            <p className="text-sm text-slate-500">Estimated Delivery: Today, 4:00 PM</p>
+          </div>
+          <span className="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">In Transit</span>
+        </div>
+
+        <div className="relative">
+          <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 rounded-full"></div>
+          <div className="absolute top-1/2 left-0 w-2/3 h-1 bg-orange-500 -translate-y-1/2 rounded-full transition-all duration-1000"></div>
+          
+          <div className="relative flex justify-between">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white ring-4 ring-white">
+                <CheckCircle2 size={16} />
+              </div>
+              <span className="text-xs font-bold mt-2 text-slate-900">Confirmed</span>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white ring-4 ring-white">
+                <Box size={16} />
+              </div>
+              <span className="text-xs font-bold mt-2 text-slate-900">Preparing</span>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white ring-4 ring-white">
+                <MapPin size={16} />
+              </div>
+              <span className="text-xs font-bold mt-2 text-slate-900">Aggregation Point</span>
+            </div>
+
+             <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 ring-4 ring-white animate-pulse">
+                <Truck size={16} />
+              </div>
+              <span className="text-xs font-bold mt-2 text-orange-600">Out for Delivery</span>
+            </div>
+
+             <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-400 ring-4 ring-white">
+                <CheckCircle2 size={16} />
+              </div>
+              <span className="text-xs font-bold mt-2 text-slate-400">Delivered</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
@@ -92,7 +145,7 @@ const Dashboard: React.FC = () => {
                 <td className="px-6 py-4 font-medium text-slate-900">#ORD-493</td>
                 <td className="px-6 py-4">5000 Bricks</td>
                 <td className="px-6 py-4">Arab Contractors</td>
-                <td className="px-6 py-4"><span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Processing</span></td>
+                <td className="px-6 py-4"><span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">In Transit</span></td>
                 <td className="px-6 py-4 text-right">EGP 7,500</td>
               </tr>
                <tr className="hover:bg-slate-50">

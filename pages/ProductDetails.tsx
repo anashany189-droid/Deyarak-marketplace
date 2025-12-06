@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { MOCK_PRODUCTS } from '../constants';
-import { Star, Truck, Shield, RotateCcw, ShoppingCart, Heart, Share2, Check } from 'lucide-react';
+import { Star, Truck, Shield, RotateCcw, ShoppingCart, Heart, Share2, Check, ShieldCheck } from 'lucide-react';
 
 interface ProductDetailsProps {
   productId: string;
@@ -87,10 +86,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack }) =>
                  </div>
                </div>
                <div className="flex items-start gap-3">
-                 <div className="p-2 bg-slate-100 rounded-full"><Shield size={18} className="text-slate-600"/></div>
+                 <div className="p-2 bg-green-50 rounded-full"><ShieldCheck size={18} className="text-green-600"/></div>
                  <div>
-                   <p className="font-semibold text-sm">Genuine Product</p>
-                   <p className="text-xs text-slate-500">Sold by verified supplier: <span className="font-bold text-blue-600">{product.supplier}</span></p>
+                   <p className="font-bold text-sm text-green-700">Verified Supplier</p>
+                   <p className="text-xs text-slate-500">Sold by verified partner: <span className="font-bold text-slate-900">{product.supplier}</span></p>
                  </div>
                </div>
             </div>

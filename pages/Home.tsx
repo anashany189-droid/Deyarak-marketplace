@@ -1,11 +1,49 @@
 import React from 'react';
-import { ArrowRight, Activity, Truck, Calculator } from 'lucide-react';
+import { ArrowRight, Activity, Truck, Calculator, Clock, Layers, ShieldCheck, Smartphone, BarChart3 } from 'lucide-react';
 
 interface HomeProps {
   onNavigate: (page: string) => void;
 }
 
 const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+  const features = [
+    {
+      icon: <BarChart3 className="h-6 w-6 text-orange-600" />,
+      title: "Real-Time Price Comparison",
+      description: "Compare material prices from multiple suppliers in seconds. No need to visit 10 different stores."
+    },
+    {
+      icon: <Clock className="h-6 w-6 text-blue-600" />,
+      title: "Save Time & Effort",
+      description: "Find everything you need in 3 seconds instead of wasting days searching the market."
+    },
+    {
+      icon: <Calculator className="h-6 w-6 text-purple-600" />,
+      title: "Smart AI Estimation",
+      description: "Ask our AI: 'How much cement for a 100m² apartment?' and get instant quantity calculations."
+    },
+    {
+      icon: <Layers className="h-6 w-6 text-green-600" />,
+      title: "Unified Platform",
+      description: "One-stop-shop for everything: Cement, Steel, Ceramics, Paints, Plumbing, and Electrical."
+    },
+    {
+      icon: <Smartphone className="h-6 w-6 text-red-600" />,
+      title: "Mobile-First Experience",
+      description: "A seamless experience whether you are on your phone at the site or on a laptop at the office."
+    },
+    {
+      icon: <Truck className="h-6 w-6 text-indigo-600" />,
+      title: "Live Order Tracking",
+      description: "Track your order steps: Processing → Aggregation Point → Out for Delivery."
+    },
+    {
+      icon: <ShieldCheck className="h-6 w-6 text-teal-600" />,
+      title: "Verified Suppliers",
+      description: "We partner only with trusted distributors to ensure quality, accurate prices, and official warranties."
+    }
+  ];
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -41,33 +79,19 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-slate-900">Why Deyarak?</h2>
-          <p className="text-slate-500 mt-2">Comprehensive solutions for your construction needs.</p>
+          <p className="text-slate-500 mt-2">7 Reasons why we are Egypt's #1 Construction Marketplace.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-slate-100">
-            <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4">
-              <Activity className="h-6 w-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+              <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center mb-4 border border-slate-100">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-slate-900">{feature.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
             </div>
-            <h3 className="text-xl font-bold mb-2 text-slate-900">Real-Time Prices</h3>
-            <p className="text-slate-600">Compare live prices from verified suppliers across Egypt for steel, cement, and finishing materials.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-slate-100">
-             <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
-              <Calculator className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-slate-900">Smart Estimation</h3>
-            <p className="text-slate-600">Use our AI assistant to calculate exact quantities needed for your apartment or building project.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-slate-100">
-             <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-4">
-              <Truck className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-slate-900">Streamlined Logistics</h3>
-            <p className="text-slate-600">Full ordering process from supplier to your doorstep via our partner delivery network.</p>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -78,8 +102,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Manage your project on the go</h2>
                <p className="text-slate-600 mb-6">Access Deyarak from any device. Our responsive platform works perfectly on your mobile phone, tablet, and desktop.</p>
                <div className="flex gap-4">
-                 <div className="h-12 w-32 bg-slate-800 rounded-md flex items-center justify-center text-white text-xs cursor-pointer">App Store</div>
-                 <div className="h-12 w-32 bg-slate-800 rounded-md flex items-center justify-center text-white text-xs cursor-pointer">Google Play</div>
+                 <div className="h-12 w-32 bg-slate-900 rounded-md flex items-center justify-center text-white text-xs cursor-pointer hover:bg-slate-800 transition-colors">App Store</div>
+                 <div className="h-12 w-32 bg-slate-900 rounded-md flex items-center justify-center text-white text-xs cursor-pointer hover:bg-slate-800 transition-colors">Google Play</div>
                </div>
             </div>
             <div className="md:w-1/2 h-64 md:h-auto w-full bg-slate-200 flex items-center justify-center">
