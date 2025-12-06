@@ -11,7 +11,8 @@ const Products: React.FC<ProductsProps> = ({ onProductClick }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Steel', 'Cement', 'Bricks', 'Aggregates', 'Finishing', 'Paints', 'Electrical', 'Plumbing'];
+  // Added 'Tools' to the category list
+  const categories = ['All', 'Steel', 'Cement', 'Bricks', 'Aggregates', 'Finishing', 'Paints', 'Tools', 'Electrical', 'Plumbing'];
 
   const filteredProducts = MOCK_PRODUCTS.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -69,7 +70,7 @@ const Products: React.FC<ProductsProps> = ({ onProductClick }) => {
             className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col cursor-pointer group"
           >
             <div className="relative h-56 bg-white flex items-center justify-center p-4">
-              <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform" />
+              <img src={product.image} alt={product.name} className="max-h-full max-w-full object-cover group-hover:scale-105 transition-transform" />
               {product.oldPrice && (
                  <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                    SALE

@@ -2,7 +2,7 @@
 import { Product, Supplier, ChartData } from './types';
 
 // Helper to generate generic construction placeholders with slight variations
-const getImg = (id: number) => `https://picsum.photos/600/600?random=${id}`;
+// We are now using specific Unsplash IDs to ensure the image matches the context (Ceramic, Steel, etc.)
 
 export const MOCK_SUPPLIERS: Supplier[] = [
   {
@@ -61,8 +61,11 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 850,
     oldPrice: 920,
     unit: 'Bucket',
-    image: getImg(10),
-    images: [getImg(10), getImg(11), getImg(12)],
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop', // White Paint Bucket
+    images: [
+      'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=600&auto=format&fit=crop'
+    ],
     supplier: 'Sedhom for Paints',
     rating: 4.8,
     reviewsCount: 342,
@@ -86,7 +89,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Paints',
     price: 1850,
     unit: 'Bucket',
-    image: getImg(13),
+    image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=600&auto=format&fit=crop', // Paint Can
     supplier: 'Jotun Official Store',
     rating: 4.9,
     reviewsCount: 120,
@@ -106,7 +109,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Paints',
     price: 320,
     unit: 'Bag',
-    image: getImg(14),
+    image: 'https://images.unsplash.com/photo-1632759132036-7014b29b9f93?q=80&w=600&auto=format&fit=crop', // White paste/putty texture
     supplier: 'Sipes Egypt',
     rating: 4.6,
     reviewsCount: 89,
@@ -120,6 +123,64 @@ export const MOCK_PRODUCTS: Product[] = [
     }
   },
 
+  // --- FINISHING TOOLS (New Category) ---
+  {
+    id: 'p-tool-1',
+    name: 'Professional Paint Roller Set (25cm)',
+    category: 'Tools',
+    price: 150,
+    unit: 'Set',
+    image: 'https://images.unsplash.com/photo-1585644198332-6878e19e072c?q=80&w=600&auto=format&fit=crop', // Paint Roller
+    supplier: 'Sedhom for Paints',
+    rating: 4.7,
+    reviewsCount: 45,
+    inStock: true,
+    description: 'Complete paint roller set with tray and handle. High density wool for smooth finish on walls.',
+    specs: {
+      "Type": "Roller",
+      "Size": "25 cm",
+      "Material": "Polyester",
+      "Includes": "Tray, Handle, Refill"
+    }
+  },
+  {
+    id: 'p-tool-2',
+    name: 'Paint Brush 3 Inch - Wood Handle',
+    category: 'Tools',
+    price: 45,
+    unit: 'Piece',
+    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=600&auto=format&fit=crop', // Paint Brushes
+    supplier: 'Sedhom for Paints',
+    rating: 4.5,
+    reviewsCount: 110,
+    inStock: true,
+    description: 'High quality bristles suitable for all types of paints and varnishes. Durable wooden handle.',
+    specs: {
+      "Size": "3 Inch",
+      "Handle": "Wood",
+      "Bristle": "Synthetic Mix"
+    }
+  },
+   {
+    id: 'p-tool-3',
+    name: 'Stainless Steel Trowel (Mahara) 28cm',
+    category: 'Tools',
+    price: 180,
+    unit: 'Piece',
+    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop', // Trowel context
+    supplier: 'Modern Tools',
+    rating: 4.8,
+    reviewsCount: 22,
+    inStock: true,
+    description: 'Professional plastering trowel. Stainless steel blade with soft grip handle. Essential for putty and plaster application.',
+    specs: {
+      "Material": "Stainless Steel",
+      "Size": "28 cm",
+      "Type": "Smoothing Trowel"
+    }
+  },
+
+
   // --- CERAMICS & FINISHING ---
   {
     id: 'p-ceramic-1',
@@ -128,8 +189,8 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 165,
     oldPrice: 190,
     unit: 'm²',
-    image: getImg(20),
-    images: [getImg(20), getImg(21)],
+    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=600&auto=format&fit=crop', // Marble Tiles
+    images: ['https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=600&auto=format&fit=crop'],
     supplier: 'El Salab',
     rating: 4.5,
     reviewsCount: 56,
@@ -149,7 +210,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Finishing',
     price: 550,
     unit: 'm²',
-    image: getImg(22),
+    image: 'https://images.unsplash.com/photo-1560130958-30c503a56825?q=80&w=600&auto=format&fit=crop', // Grey Stone Tile
     supplier: 'Mahgoub',
     rating: 4.9,
     reviewsCount: 23,
@@ -171,7 +232,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Electrical',
     price: 2850,
     unit: 'Roll',
-    image: getImg(30),
+    image: 'https://images.unsplash.com/photo-1549925695-8848d6139988?q=80&w=600&auto=format&fit=crop', // Electrical Cable Spools
     supplier: 'Elsewedy Electric Store',
     rating: 5.0,
     reviewsCount: 512,
@@ -192,7 +253,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 65,
     oldPrice: 80,
     unit: 'Unit',
-    image: getImg(31),
+    image: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=600&auto=format&fit=crop', // LED Bulb
     supplier: 'Venus',
     rating: 4.7,
     reviewsCount: 1020,
@@ -207,11 +268,11 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'p-elec-3',
-    name: 'Schneider Electric Mini Pragma Enclosure 24 Modules',
+    name: 'Schneider Electric Mini Pragma Enclosure',
     category: 'Electrical',
     price: 1200,
     unit: 'Unit',
-    image: getImg(32),
+    image: 'https://images.unsplash.com/photo-1621252179027-94459d27d3ee?q=80&w=600&auto=format&fit=crop', // Electric Panel
     supplier: 'Schneider Distribution',
     rating: 4.8,
     reviewsCount: 45,
@@ -232,7 +293,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Plumbing',
     price: 120,
     unit: 'Piece',
-    image: getImg(40),
+    image: 'https://images.unsplash.com/photo-1605623086915-4673322479e3?q=80&w=600&auto=format&fit=crop', // Green/Plastic Pipes
     supplier: 'Banha (BR) Official',
     rating: 4.9,
     reviewsCount: 300,
@@ -252,7 +313,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Plumbing',
     price: 1850,
     unit: 'Unit',
-    image: getImg(41),
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop', // Chrome Faucet
     supplier: 'El Sharif Mixers',
     rating: 4.6,
     reviewsCount: 88,
@@ -271,7 +332,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Plumbing',
     price: 4500,
     unit: 'Unit',
-    image: getImg(42),
+    image: 'https://images.unsplash.com/photo-1596255106511-9213134989ae?q=80&w=600&auto=format&fit=crop', // Toilet
     supplier: 'El Salab',
     rating: 4.8,
     reviewsCount: 67,
@@ -292,7 +353,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Steel',
     price: 48000,
     unit: 'Ton',
-    image: getImg(50),
+    image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=600&auto=format&fit=crop', // Rebar
     supplier: 'Ezz Steel',
     rating: 5.0,
     reviewsCount: 1500,
@@ -311,7 +372,7 @@ export const MOCK_PRODUCTS: Product[] = [
     category: 'Cement',
     price: 120,
     unit: 'Bag',
-    image: getImg(51),
+    image: 'https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?q=80&w=600&auto=format&fit=crop', // Cement Bag context
     supplier: 'Lafarge Egypt',
     rating: 4.7,
     reviewsCount: 890,
