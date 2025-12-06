@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ArrowRight, Activity, Truck, Calculator, Clock, Layers, ShieldCheck, Smartphone, BarChart3 } from 'lucide-react';
+import { ArrowRight, Activity, Truck, Calculator, Clock, Layers, ShieldCheck, Smartphone, BarChart3, QrCode } from 'lucide-react';
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -43,6 +44,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       description: "We partner only with trusted distributors to ensure quality, accurate prices, and official warranties."
     }
   ];
+
+  // Get current URL for QR code, fallback to a generic one if window is undefined
+  const currentUrl = typeof window !== 'undefined' ? window.location.origin : 'https://deyarak.com';
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(currentUrl)}`;
 
   return (
     <div className="w-full">
@@ -95,19 +100,36 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-       {/* Mobile App Call to Action */}
+       {/* Mobile App & QR Code Section */}
        <section className="bg-slate-100 py-16 px-4">
-         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center">
-            <div className="p-8 md:p-12 md:w-1/2">
+         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+            <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
                <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Manage your project on the go</h2>
-               <p className="text-slate-600 mb-6">Access Deyarak from any device. Our responsive platform works perfectly on your mobile phone, tablet, and desktop.</p>
+               <p className="text-slate-600 mb-6">
+                 Scan the QR code to open Deyarak instantly on your mobile device. Access real-time prices and order tracking from the construction site.
+               </p>
                <div className="flex gap-4">
-                 <div className="h-12 w-32 bg-slate-900 rounded-md flex items-center justify-center text-white text-xs cursor-pointer hover:bg-slate-800 transition-colors">App Store</div>
-                 <div className="h-12 w-32 bg-slate-900 rounded-md flex items-center justify-center text-white text-xs cursor-pointer hover:bg-slate-800 transition-colors">Google Play</div>
+                 <button className="h-12 px-6 bg-slate-900 rounded-md flex items-center justify-center text-white text-xs font-bold cursor-pointer hover:bg-slate-800 transition-colors">
+                    App Store
+                 </button>
+                 <button className="h-12 px-6 bg-slate-900 rounded-md flex items-center justify-center text-white text-xs font-bold cursor-pointer hover:bg-slate-800 transition-colors">
+                    Google Play
+                 </button>
                </div>
             </div>
-            <div className="md:w-1/2 h-64 md:h-auto w-full bg-slate-200 flex items-center justify-center">
-               <span className="text-slate-400 font-medium">App Preview Image</span>
+            
+            <div className="md:w-1/2 bg-slate-50 p-8 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-slate-200">
+               <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-100 mb-4 transform hover:scale-105 transition-transform duration-300">
+                 <img 
+                   src={qrCodeUrl} 
+                   alt="Deyarak QR Code" 
+                   className="w-48 h-48 object-contain"
+                 />
+               </div>
+               <div className="flex items-center text-slate-500 font-medium text-sm">
+                 <QrCode className="w-4 h-4 mr-2" />
+                 Scan to open on mobile
+               </div>
             </div>
          </div>
        </section>
