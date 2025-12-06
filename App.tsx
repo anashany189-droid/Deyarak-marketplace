@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -5,12 +6,18 @@ import SmartAssistant from './components/SmartAssistant';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails';
+import Suppliers from './pages/Suppliers';
 
 const App: React.FC = () => {
-  // Simple client-side routing state for demo purposes
-  // In a full app, react-router-dom with HashRouter would be used, 
-  // but a state switch is simpler and safer for this single-file output format constraint.
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+
+  const navigateToProduct = (productId: string) => {
+    setSelectedProductId(productId);
+    setCurrentPage('product-details');
+    window.scrollTo(0, 0);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -19,22 +26,16 @@ const App: React.FC = () => {
       case 'dashboard':
         return <Dashboard />;
       case 'products':
-        return <Products />;
-      case 'suppliers':
+        return <Products onProductClick={navigateToProduct} />;
+      case 'product-details':
         return (
-          <div className="flex items-center justify-center min-h-[50vh]">
-            <div className="text-center p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Supplier Network</h2>
-              <p className="text-slate-500">Coming soon: A map view of all our 500+ trusted partners across Egypt.</p>
-              <button 
-                onClick={() => setCurrentPage('home')}
-                className="mt-4 text-orange-600 font-medium hover:underline"
-              >
-                Return Home
-              </button>
-            </div>
-          </div>
+          <ProductDetails 
+            productId={selectedProductId!} 
+            onBack={() => setCurrentPage('products')} 
+          />
         );
+      case 'suppliers':
+        return <Suppliers />;
       case 'login':
         return (
            <div className="flex items-center justify-center min-h-[60vh] px-4">

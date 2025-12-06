@@ -1,187 +1,328 @@
-import { Product, ChartData } from './types';
+
+import { Product, Supplier, ChartData } from './types';
+
+// Helper to generate generic construction placeholders with slight variations
+const getImg = (id: number) => `https://picsum.photos/600/600?random=${id}`;
+
+export const MOCK_SUPPLIERS: Supplier[] = [
+  {
+    id: 's1',
+    name: 'El Salab (Mostafa El Salab)',
+    rating: 4.8,
+    location: 'Nasr City, Cairo',
+    specialty: 'Ceramics & Sanitary Ware',
+    logo: 'https://ui-avatars.com/api/?name=El+Salab&background=f97316&color=fff',
+    phone: '19600'
+  },
+  {
+    id: 's2',
+    name: 'Mahgoub for Ceramic',
+    rating: 4.7,
+    location: 'Maadi, Cairo',
+    specialty: 'Porcelain & Ceramics',
+    logo: 'https://ui-avatars.com/api/?name=Mahgoub&background=1e293b&color=fff',
+    phone: '19000'
+  },
+  {
+    id: 's3',
+    name: 'Sedhom for Paints',
+    rating: 4.5,
+    location: 'Haram, Giza',
+    specialty: 'Paints & Finishing',
+    logo: 'https://ui-avatars.com/api/?name=Sedhom&background=2563eb&color=fff',
+    phone: '01000000000'
+  },
+  {
+    id: 's4',
+    name: 'El Mazloum',
+    rating: 4.6,
+    location: 'Alexandria',
+    specialty: 'Ceramics & Decor',
+    logo: 'https://ui-avatars.com/api/?name=El+Mazloum&background=dc2626&color=fff',
+    phone: '16000'
+  },
+  {
+    id: 's5',
+    name: 'Elsewedy Electric Store',
+    rating: 4.9,
+    location: 'Fifth Settlement, Cairo',
+    specialty: 'Electrical Supplies',
+    logo: 'https://ui-avatars.com/api/?name=Elsewedy&background=ef4444&color=fff',
+    phone: '19900'
+  }
+];
 
 export const MOCK_PRODUCTS: Product[] = [
-  // Steel (Rebar)
+  // --- PAINTS (GLC, JOTUN, SIPES) ---
   {
-    id: '1',
-    name: 'Ezz Steel Rebar 12mm',
-    category: 'Steel',
-    price: 42000,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=1',
-    supplier: 'Ezz Steel'
-  },
-  {
-    id: '101',
-    name: 'Beshay Steel Rebar 10mm',
-    category: 'Steel',
-    price: 41500,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=101',
-    supplier: 'Beshay Steel'
-  },
-  {
-    id: '102',
-    name: 'Egyptian Steel (Al-Masryeen) 16mm',
-    category: 'Steel',
-    price: 41800,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=102',
-    supplier: 'Egyptian Steel'
-  },
-
-  // Cement
-  {
-    id: '2',
-    name: 'Amreyah Portland Cement',
-    category: 'Cement',
-    price: 2150,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=2',
-    supplier: 'Amreyah Cement'
-  },
-  {
-    id: '201',
-    name: 'Lafarge Al-Mumtaz Cement',
-    category: 'Cement',
-    price: 2250,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=201',
-    supplier: 'Lafarge Egypt'
-  },
-  {
-    id: '202',
-    name: 'Cemex Assiut Cement (Resistant)',
-    category: 'Cement',
-    price: 2350,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=202',
-    supplier: 'Cemex'
-  },
-  {
-    id: '203',
-    name: 'Helwan Cement (Tourah)',
-    category: 'Cement',
-    price: 2100,
-    unit: 'Ton',
-    image: 'https://picsum.photos/400/300?random=203',
-    supplier: 'Tourah Portland Cement'
-  },
-
-  // Bricks & Aggregates
-  {
-    id: '3',
-    name: 'Perforated Red Bricks (25x12x6)',
-    category: 'Bricks',
-    price: 1600,
-    unit: '1000 Units',
-    image: 'https://picsum.photos/400/300?random=3',
-    supplier: 'Arab Contractors'
-  },
-  {
-    id: '301',
-    name: 'Solid Cement Bricks',
-    category: 'Bricks',
-    price: 1900,
-    unit: '1000 Units',
-    image: 'https://picsum.photos/400/300?random=301',
-    supplier: 'Local Factories'
-  },
-  {
-    id: '5',
-    name: 'Fine Yellow Sand',
-    category: 'Aggregates',
-    price: 180,
-    unit: 'm³',
-    image: 'https://picsum.photos/400/300?random=5',
-    supplier: 'Nile Aggregates'
-  },
-  
-  // Finishing & Ceramics
-  {
-    id: '4',
-    name: 'Cleopatra Ceramic Floor - Beige 60x60',
-    category: 'Finishing',
-    price: 185,
-    unit: 'm²',
-    image: 'https://picsum.photos/400/300?random=4',
-    supplier: 'Cleopatra Ceramics'
-  },
-  {
-    id: '401',
-    name: 'Gemma Porcelain Tiles - Marble Look',
-    category: 'Finishing',
-    price: 450,
-    unit: 'm²',
-    image: 'https://picsum.photos/400/300?random=401',
-    supplier: 'Gemma'
-  },
-  {
-    id: '402',
-    name: 'Royal Ceramica Wall Tiles',
-    category: 'Finishing',
-    price: 160,
-    unit: 'm²',
-    image: 'https://picsum.photos/400/300?random=402',
-    supplier: 'Royal Ceramica'
-  },
-
-  // Paints
-  {
-    id: '6',
-    name: 'Jotun Fenomastic My Home Rich Matt',
-    category: 'Paints',
-    price: 1250,
-    unit: 'Bucket (9L)',
-    image: 'https://picsum.photos/400/300?random=6',
-    supplier: 'Jotun Egypt'
-  },
-  {
-    id: '601',
-    name: 'GLC Super Dai 7070',
+    id: 'p-paint-1',
+    name: 'GLC Super Dai 7070 - White (9L)',
     category: 'Paints',
     price: 850,
-    unit: 'Bucket (9L)',
-    image: 'https://picsum.photos/400/300?random=601',
-    supplier: 'GLC Paints'
+    oldPrice: 920,
+    unit: 'Bucket',
+    image: getImg(10),
+    images: [getImg(10), getImg(11), getImg(12)],
+    supplier: 'Sedhom for Paints',
+    rating: 4.8,
+    reviewsCount: 342,
+    inStock: true,
+    description: 'High quality acrylic emulsion paint for interior use. Excellent whiteness and hiding power. Commonly used for apartments in Egypt.',
+    specs: {
+      "Brand": "GLC",
+      "Type": "Interior Emulsion",
+      "Finish": "Matt",
+      "Color": "White",
+      "Size": "9 Liters (Galon)"
+    },
+    reviews: [
+      { id: 'r1', user: 'Ahmed Mohsen', rating: 5, comment: 'Best value for money in the market.', date: '2024-02-10' },
+      { id: 'r2', user: 'Mohamed Ali', rating: 4, comment: 'Good coverage but needs 3 faces.', date: '2024-01-15' }
+    ]
   },
   {
-    id: '602',
-    name: 'Sipes 700 Latex Paint',
+    id: 'p-paint-2',
+    name: 'Jotun Fenomastic My Home Rich Matt (9L)',
     category: 'Paints',
-    price: 780,
-    unit: 'Bucket (10L)',
-    image: 'https://picsum.photos/400/300?random=602',
-    supplier: 'Sipes Egypt'
+    price: 1850,
+    unit: 'Bucket',
+    image: getImg(13),
+    supplier: 'Jotun Official Store',
+    rating: 4.9,
+    reviewsCount: 120,
+    inStock: true,
+    description: 'Premium quality paint giving reliable color accuracy and a smooth matt finish. Washable and durable.',
+    specs: {
+      "Brand": "Jotun",
+      "Model": "Fenomastic My Home",
+      "Finish": "Rich Matt",
+      "Color": "Computer Tintable",
+      "Size": "9 Liters"
+    }
+  },
+  {
+    id: 'p-putty-1',
+    name: 'Sipes Acrylic Putty 700 (15kg)',
+    category: 'Paints',
+    price: 320,
+    unit: 'Bag',
+    image: getImg(14),
+    supplier: 'Sipes Egypt',
+    rating: 4.6,
+    reviewsCount: 89,
+    inStock: true,
+    description: 'Ready to use acrylic putty for interior walls. Easy to sand and provides a smooth surface for painting.',
+    specs: {
+      "Brand": "Sipes",
+      "Weight": "15 kg",
+      "Type": "Acrylic Putty",
+      "Usage": "Interior Walls"
+    }
   },
 
-  // Electrical & Plumbing
+  // --- CERAMICS & FINISHING ---
   {
-    id: '701',
-    name: 'Elsewedy Electric Cable 4mm',
+    id: 'p-ceramic-1',
+    name: 'Cleopatra Floor Ceramic - Beige Marble 60x60',
+    category: 'Finishing',
+    price: 165,
+    oldPrice: 190,
+    unit: 'm²',
+    image: getImg(20),
+    images: [getImg(20), getImg(21)],
+    supplier: 'El Salab',
+    rating: 4.5,
+    reviewsCount: 56,
+    inStock: true,
+    description: 'Laser-cut first sorting ceramic tiles. Beige marble design suitable for reception and living rooms.',
+    specs: {
+      "Brand": "Cleopatra",
+      "Size": "60x60 cm",
+      "Type": "Laser Cut",
+      "Sorting": "First Sort",
+      "Texture": "Glossy"
+    }
+  },
+  {
+    id: 'p-ceramic-2',
+    name: 'Gemma Porcelain Tiles - Grey Stone 60x120',
+    category: 'Finishing',
+    price: 550,
+    unit: 'm²',
+    image: getImg(22),
+    supplier: 'Mahgoub',
+    rating: 4.9,
+    reviewsCount: 23,
+    inStock: true,
+    description: 'High-end heavy duty porcelain. Suitable for high traffic areas, receptions, and commercial use.',
+    specs: {
+      "Brand": "Gemma",
+      "Material": "Porcelain",
+      "Size": "60x120 cm",
+      "Sorting": "First Sort",
+      "Finish": "Matt Stone"
+    }
+  },
+
+  // --- ELECTRICAL (Kahraba) ---
+  {
+    id: 'p-elec-1',
+    name: 'Elsewedy Cable 3mm - Red (100m Roll)',
     category: 'Electrical',
-    price: 2600,
-    unit: 'Roll (100m)',
-    image: 'https://picsum.photos/400/300?random=701',
-    supplier: 'Elsewedy Electric'
+    price: 2850,
+    unit: 'Roll',
+    image: getImg(30),
+    supplier: 'Elsewedy Electric Store',
+    rating: 5.0,
+    reviewsCount: 512,
+    inStock: true,
+    description: 'Original Elsewedy insulated copper wire. Standard for lighting and outlets in Egyptian apartments.',
+    specs: {
+      "Brand": "Elsewedy Electric",
+      "Thickness": "3 mm",
+      "Length": "100 Meters",
+      "Core": "Copper",
+      "Insulation": "PVC"
+    }
   },
   {
-    id: '702',
-    name: 'BR Polypropylene Pipe 3/4 inch',
-    category: 'Plumbing',
-    price: 85,
-    unit: 'Meter',
-    image: 'https://picsum.photos/400/300?random=702',
-    supplier: 'Banha (BR)'
-  },
-  {
-    id: '703',
-    name: 'Sharif Mixer Tap (Kitchen)',
-    category: 'Plumbing',
-    price: 1500,
+    id: 'p-elec-2',
+    name: 'Venus LED Bulb 9 Watt - Warm White',
+    category: 'Electrical',
+    price: 65,
+    oldPrice: 80,
     unit: 'Unit',
-    image: 'https://picsum.photos/400/300?random=703',
-    supplier: 'El Sharif'
+    image: getImg(31),
+    supplier: 'Venus',
+    rating: 4.7,
+    reviewsCount: 1020,
+    inStock: true,
+    description: 'Energy saving LED bulb with 3 years warranty. Standard E27 screw base.',
+    specs: {
+      "Brand": "Venus",
+      "Power": "9 Watt",
+      "Color": "Warm White (3000K)",
+      "Warranty": "3 Years"
+    }
+  },
+  {
+    id: 'p-elec-3',
+    name: 'Schneider Electric Mini Pragma Enclosure 24 Modules',
+    category: 'Electrical',
+    price: 1200,
+    unit: 'Unit',
+    image: getImg(32),
+    supplier: 'Schneider Distribution',
+    rating: 4.8,
+    reviewsCount: 45,
+    inStock: true,
+    description: 'Flush mounted distribution enclosure. Essential for apartment breaker panels.',
+    specs: {
+      "Brand": "Schneider",
+      "Type": "Flush Mounted",
+      "Capacity": "24 Modules",
+      "Material": "Plastic"
+    }
+  },
+
+  // --- PLUMBING (Sabaka) ---
+  {
+    id: 'p-plumb-1',
+    name: 'BR (Banha) Pipe 3/4 inch - 4 Meters',
+    category: 'Plumbing',
+    price: 120,
+    unit: 'Piece',
+    image: getImg(40),
+    supplier: 'Banha (BR) Official',
+    rating: 4.9,
+    reviewsCount: 300,
+    inStock: true,
+    description: 'Polypropylene (PPR) pipes for hot and cold water. Anti-bacterial and high durability.',
+    specs: {
+      "Brand": "BR (Banha)",
+      "Diameter": "3/4 Inch",
+      "Length": "4 Meters",
+      "Material": "Polypropylene",
+      "Pressure": "PN20"
+    }
+  },
+  {
+    id: 'p-plumb-2',
+    name: 'El Sharif Kitchen Mixer - Wall Mounted',
+    category: 'Plumbing',
+    price: 1850,
+    unit: 'Unit',
+    image: getImg(41),
+    supplier: 'El Sharif Mixers',
+    rating: 4.6,
+    reviewsCount: 88,
+    inStock: true,
+    description: 'Brass body with high quality chrome finish. 10 years warranty against manufacturing defects.',
+    specs: {
+      "Brand": "El Sharif",
+      "Type": "Wall Mounted",
+      "Material": "Brass",
+      "Warranty": "10 Years"
+    }
+  },
+  {
+    id: 'p-plumb-3',
+    name: 'Duravit Meridian Toilet Close Coupled',
+    category: 'Plumbing',
+    price: 4500,
+    unit: 'Unit',
+    image: getImg(42),
+    supplier: 'El Salab',
+    rating: 4.8,
+    reviewsCount: 67,
+    inStock: true,
+    description: 'Complete toilet set including seat cover and tank mechanism.',
+    specs: {
+      "Brand": "Duravit",
+      "Model": "Meridian",
+      "Color": "White",
+      "Type": "Close Coupled"
+    }
+  },
+
+  // --- STEEL & CEMENT ---
+  {
+    id: 'p-steel-1',
+    name: 'Ezz Steel Rebar 12mm',
+    category: 'Steel',
+    price: 48000,
+    unit: 'Ton',
+    image: getImg(50),
+    supplier: 'Ezz Steel',
+    rating: 5.0,
+    reviewsCount: 1500,
+    inStock: true,
+    description: 'High tensile steel rebars for concrete reinforcement. Grade B500DWR.',
+    specs: {
+      "Brand": "Ezz Steel",
+      "Diameter": "12 mm",
+      "Grade": "B500DWR",
+      "Standard": "ES 262/2015"
+    }
+  },
+  {
+    id: 'p-cement-1',
+    name: 'Lafarge Al-Mumtaz Cement (50kg)',
+    category: 'Cement',
+    price: 120,
+    unit: 'Bag',
+    image: getImg(51),
+    supplier: 'Lafarge Egypt',
+    rating: 4.7,
+    reviewsCount: 890,
+    inStock: true,
+    description: 'Portland Limestone Cement suitable for plastering, bricklaying, and tiling.',
+    specs: {
+      "Brand": "Lafarge",
+      "Weight": "50 kg",
+      "Type": "CEM II/B-L 32.5N",
+      "Usage": "Finishing Works"
+    }
   }
 ];
 
@@ -189,7 +330,7 @@ export const PRICE_HISTORY_DATA: ChartData[] = [
   { name: 'Jan', price: 38000, date: '2024-01' },
   { name: 'Feb', price: 39500, date: '2024-02' },
   { name: 'Mar', price: 45000, date: '2024-03' },
-  { name: 'Apr', price: 43000, date: '2024-04' },
-  { name: 'May', price: 42500, date: '2024-05' },
-  { name: 'Jun', price: 42000, date: '2024-06' },
+  { name: 'Apr', price: 46000, date: '2024-04' },
+  { name: 'May', price: 48000, date: '2024-05' },
+  { name: 'Jun', price: 48500, date: '2024-06' },
 ];
